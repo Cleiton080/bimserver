@@ -4,8 +4,8 @@
 
 To install the openBimServer on your ubuntu you need some requisits:
 
-- [JDK]()
-- [Tomcat]()
+- [JDK](#jdk)
+- [Tomcat](#tomcat)
 
 ### JDK
 
