@@ -2,14 +2,14 @@
 
 ## Ubuntu
 
-To install the openBimServer on your ubuntu you need some requisits:
+Requisits that you need to install the OpenBimServer:
 
 - [JDK](#jdk)
 - [Tomcat](#tomcat)
 
 ### JDK
 
-If you want to run the OpenBimServer, you need install the JDK in your machine. For that, open your terminal and type:
+To run the OpenBimServer, you'll need install the JDK (Java Development Kit) in your personal computer. For install it, enter the command bellow on your terminal:
 
 ```
 sudo apt install openjdk-8-jdk
@@ -17,7 +17,7 @@ sudo apt install openjdk-8-jdk
 
 ### Tomcat
 
-Now we can download the tomcat, we'll use it as server. Look up your terminal again and type:
+Now we should download the tomcat, it is an open source web server and servlet container from apache. Look up your terminal again and type:
 
 ```
 sudo apt install tomcat8
@@ -25,34 +25,37 @@ sudo apt install tomcat8
 sudo apt install tomcat8-admin
 ```
 
-In this example we'll use tomcat version 8. Now it's necessary set up the tomcat, through terminal move on to the file `tomcat-users.xml` using the commands bellow:
+In this example we did use the tomcat version 8 though I think is the same process in another versions. After you downloaded is necessary set up the tomcat that is super simple, we just need open the `tomcat-users.xml` file through the terminal using the next command:
 
 ```
 sudo nano /etc/tomcat8/tomcat-users.xml
 ```
 
-With the file opened add the new user, you need put this code before tag `</tomcat-user>`. you would replace the username and password
+The file must be opened on your terminal and now we should put some roles on it. Take care because is necessary add the roles before the `</tomcat-user>` tag.
 
 ```
 <role rolename="manager-gui"/>
 <role rolename="admin-gui"/>
 <user username="tomcat" password="root" roles="manager-gui,admin-gui"/>
 ```
+I did use the username as tomcat and the password as root but you can replace it.
 
 ### Install OpenBimServer
 
-Go to github and select the version of OpenBimServer that you want to
+Okay, now everthing is set up to download the OpenBimServer, so just go to the GitHub and download the release version that you want to. The format we need is the `.war` format
 
-```
-https://github.com/opensourceBIM/BIMserver/tags
-```
+[GitHub of OpenBimServer](https://github.com/opensourceBIM/BIMserver/tags)
 
-When the download was finished you'd unzip it and move it to `webapps` folder
+When the download have had done, you can move it to `webapps` folder. I'll show you how do it, let's go.
 
 ```
 sudo mv [your download path] /var/tomcat8/webapps
+```
+where is `[your download path]` you must replace it to path of your download, for example `~/Download/bimserverwar-1.5.162.war`
 
+Very good, almost everything is done. Now let's restart the tomcat8
+
+```
 sudo service tomcat8 restart
 ```
-
-Now open your favorite browser and go to `localhost:8080/manager/html`
+Choose your favorite browser and go to `localhost:8080/manager/html` and wait the page is loaded, maybe it's slow a little bit, just wait.
